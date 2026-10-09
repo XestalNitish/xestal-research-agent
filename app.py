@@ -428,9 +428,9 @@ with st.sidebar:
 
     if provider == "Google Gemini":
         model_options = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"]
-        default_key = get_env_or_secret("GOOGLE_API_KEY")
         key_label = "Google API Key"
-        key_help = "Active API Key loaded from .env / Secrets"
+        key_help = "Get your free API key from https://aistudio.google.com/"
+        placeholder_key = "Paste your Google Gemini API key here..."
     elif provider == "Groq":
         model_options = [
             "llama-3.3-70b-versatile",
@@ -438,27 +438,28 @@ with st.sidebar:
             "deepseek-r1-distill-llama-70b",
             "gemma2-9b-it"
         ]
-        default_key = get_env_or_secret("GROQ_API_KEY")
         key_label = "Groq API Key"
-        key_help = "Get key from console.groq.com"
+        key_help = "Get your API key from https://console.groq.com/keys"
+        placeholder_key = "Paste your Groq API key here (gsk_...)"
     else:
         model_options = ["gpt-4o-mini", "gpt-4o", "o3-mini"]
-        default_key = get_env_or_secret("OPENAI_API_KEY")
         key_label = "OpenAI API Key"
-        key_help = "Get key from platform.openai.com"
+        key_help = "Get your API key from https://platform.openai.com/api-keys"
+        placeholder_key = "Paste your OpenAI API key here (sk-...)"
 
     selected_model = st.selectbox("Active Model", options=model_options)
     api_key_input = st.text_input(
         key_label,
-        value=default_key,
+        value="",
         type="password",
+        placeholder=placeholder_key,
         help=key_help
     )
 
-    if api_key_input:
-        st.caption("🟢 API Key Ready")
+    if api_key_input.strip():
+        st.caption("🟢 API Key entered")
     else:
-        st.caption("⚠️ API Key required")
+        st.caption("⚠️ Please enter your API Key above")
 
     temperature = st.slider(
         "Reasoning Temperature",

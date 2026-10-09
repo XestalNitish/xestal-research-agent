@@ -28,7 +28,7 @@ _trash/
 .agent_tools/
 
 # Local backup folder
-"orignal code of research system/"
+orignal\ code\ of\ research\ system/
 *backup*/
 build/
 dist/

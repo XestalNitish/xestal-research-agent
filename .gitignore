@@ -1,0 +1,42 @@
+# Environments and Virtualenvs
+.venv/
+venv/
+ENV/
+env/
+.env
+.env.*
+!.env.example
+
+# Streamlit secrets and runtime
+.streamlit/secrets.toml
+!.streamlit/secrets.toml.example
+.streamlit/*.local.toml
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# User uploads & workspace scratch/caches
+uploads/*
+!uploads/.gitkeep
+research_vault/*
+!research_vault/.gitkeep
+_trash/
+.agent_tools/
+
+# Distribution & packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.bak
+*.swp

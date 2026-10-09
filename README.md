@@ -1,10 +1,14 @@
 # 🧭 DeepResearch Agent
 
-An autonomous research and analytical intelligence system built with **LangGraph**, **LangChain**, and **Streamlit**. The agent conducts multi-stage investigations, queries live web sources and academic repositories, reads uploaded local documents/PDFs, performs anti-hallucination fact-checking audits, and exports polished research deliverables into a persistent research vault.
+> **Engineered with ⚡ by [x-estal nitish](https://www.linkedin.com/in/nitish-kumar-33714642b)**  
+> 📸 Instagram: [@x_estal_nitish](https://instagram.com/x_estal_nitish) &bull; 💼 LinkedIn: [Nitish Kumar](https://www.linkedin.com/in/nitish-kumar-33714642b)
+
+An autonomous research and analytical intelligence system built with **LangGraph**, **LangChain**, and **Streamlit** featuring a **Liquid Glass (Glassmorphism 3.0)** UI. The agent conducts multi-stage investigations, queries live web sources and academic repositories, reads uploaded local documents/PDFs, performs anti-hallucination fact-checking audits, and exports polished research deliverables into a persistent research vault.
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![LangGraph](https://img.shields.io/badge/Orchestration-LangGraph-orange.svg)](https://github.com/langchain-ai/langgraph)
+[![UI](https://img.shields.io/badge/UI-Liquid%20Glass%20Design-38bdf8.svg)](https://streamlit.io)
 
 ---
 

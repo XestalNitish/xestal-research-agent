@@ -23,70 +23,308 @@ from tools import (
 
 # Page configuration
 st.set_page_config(
-    page_title="DeepResearch Agent | LangGraph Investigation System",
-    page_icon="🧭",
+    page_title="DeepResearch Agent | by x-estal nitish",
+    page_icon="💎",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling
+# ---------------------------------------------------------
+# Liquid Glass Theme & Styling (Glassmorphism 3.0)
+# ---------------------------------------------------------
 st.markdown("""
 <style>
-    .main-title {
-        font-size: 2.2rem;
-        font-weight: 800;
-        background: linear-gradient(90deg, #38BDF8, #818CF8, #C084FC);
+    /* Global Background & Atmospheric Mesh */
+    .stApp {
+        background: 
+            radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.16) 0px, transparent 45%),
+            radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.18) 0px, transparent 45%),
+            radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.08) 0px, transparent 55%),
+            radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.14) 0px, transparent 45%),
+            radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.12) 0px, transparent 45%),
+            #070B14;
+        color: #F8FAFC;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Sidebar Glass Styling */
+    section[data-testid="stSidebar"] {
+        background: rgba(10, 16, 30, 0.72) !important;
+        backdrop-filter: blur(24px) saturate(190%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Liquid Glass Cards */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        padding: 20px 24px;
+        margin-bottom: 16px;
+        box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+        border-color: rgba(56, 189, 248, 0.35);
+        box-shadow: 0 16px 42px 0 rgba(14, 165, 233, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+    }
+
+    /* Hero Branding Header */
+    .hero-container {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+        backdrop-filter: blur(28px) saturate(200%);
+        -webkit-backdrop-filter: blur(28px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        padding: 28px 32px;
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+    .hero-container::before {
+        content: '';
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%);
+        filter: blur(35px);
+        pointer-events: none;
+    }
+    .hero-title {
+        font-size: 2.6rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #FFFFFF 0%, #38BDF8 40%, #818CF8 75%, #C084FC 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.2rem;
+        margin-bottom: 6px;
+        line-height: 1.15;
     }
-    .sub-title {
+    .hero-subtitle {
         font-size: 1.05rem;
         color: #94A3B8;
-        margin-bottom: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 16px;
+        max-width: 850px;
     }
-    .metric-card {
-        background-color: #1E293B;
-        border-radius: 10px;
-        padding: 12px 16px;
-        border: 1px solid #334155;
+
+    /* Creator Pill & Socials */
+    .creator-bar {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 14px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .creator-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(14, 165, 233, 0.12);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        color: #E0F2FE;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+    }
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #F1F5F9 !important;
+        text-decoration: none !important;
+        padding: 6px 16px;
+        border-radius: 9999px;
+        font-size: 0.86rem;
+        font-weight: 500;
+        backdrop-filter: blur(12px);
+        transition: all 0.25s ease;
+    }
+    .social-link:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.28);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+    .social-link.insta:hover {
+        background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(253, 29, 29, 0.25));
+        border-color: #E1306C;
+        box-shadow: 0 0 18px rgba(225, 48, 108, 0.35);
+    }
+    .social-link.linkedin:hover {
+        background: rgba(10, 102, 194, 0.25);
+        border-color: #0A66C2;
+        box-shadow: 0 0 18px rgba(10, 102, 194, 0.35);
+    }
+
+    /* Creator Sidebar Profile Card */
+    .sidebar-profile {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .sidebar-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0EA5E9, #8B5CF6, #EC4899);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        font-weight: 800;
+        color: white;
         margin-bottom: 10px;
+        box-shadow: 0 0 20px rgba(14, 165, 233, 0.45);
+        border: 2px solid rgba(255, 255, 255, 0.3);
     }
-    .node-card {
-        background-color: #0F172A;
-        border-left: 4px solid #38BDF8;
-        border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 10px;
+    .sidebar-name {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #F8FAFC;
+        margin-bottom: 2px;
     }
+    .sidebar-role {
+        font-size: 0.8rem;
+        color: #94A3B8;
+        margin-bottom: 12px;
+        letter-spacing: 0.02em;
+    }
+
+    /* Liquid Glass Buttons */
+    .stButton > button {
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.85) 0%, rgba(99, 102, 241, 0.85) 50%, rgba(168, 85, 247, 0.85) 100%) !important;
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        border-radius: 12px !important;
+        padding: 10px 24px !important;
+        backdrop-filter: blur(12px) !important;
+        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .stButton > button:hover {
+        transform: translateY(-2px) scale(1.01) !important;
+        box-shadow: 0 14px 32px rgba(14, 165, 233, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+        border-color: rgba(255, 255, 255, 0.45) !important;
+    }
+
+    /* Tabs Custom Styling */
+    .stTabs [data-baseweb="tab-list"] {
+        background: rgba(255, 255, 255, 0.035) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 16px !important;
+        padding: 6px !important;
+        gap: 6px !important;
+        backdrop-filter: blur(16px) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+    .stTabs [data-baseweb="tab"] {
+        border-radius: 10px !important;
+        color: #94A3B8 !important;
+        font-weight: 500 !important;
+        padding: 8px 18px !important;
+        transition: all 0.25s ease !important;
+        border: none !important;
+    }
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)) !important;
+        color: #F8FAFC !important;
+        font-weight: 700 !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* Inputs, Textareas, Selectboxes */
+    .stTextInput > div > div, .stTextArea > div > div, .stSelectbox > div > div {
+        background: rgba(15, 23, 42, 0.55) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+        backdrop-filter: blur(14px) !important;
+        color: #F8FAFC !important;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    }
+    .stTextInput > div > div:focus-within, .stTextArea > div > div:focus-within {
+        border-color: #38BDF8 !important;
+        box-shadow: 0 0 18px rgba(56, 189, 248, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* Expanders */
+    div[data-testid="stExpander"] {
+        background: rgba(255, 255, 255, 0.025) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 14px !important;
+        backdrop-filter: blur(14px) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* Badges */
     .badge-pass {
-        background-color: #065F46;
+        background: rgba(16, 185, 129, 0.15);
         color: #34D399;
-        padding: 3px 10px;
-        border-radius: 12px;
+        border: 1px solid rgba(52, 211, 153, 0.35);
+        padding: 4px 14px;
+        border-radius: 9999px;
         font-size: 0.85rem;
         font-weight: 600;
         display: inline-block;
+        box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
     }
     .badge-retry {
-        background-color: #7C2D12;
-        color: #FB923C;
-        padding: 3px 10px;
-        border-radius: 12px;
+        background: rgba(245, 158, 11, 0.15);
+        color: #FBBF24;
+        border: 1px solid rgba(251, 191, 36, 0.35);
+        padding: 4px 14px;
+        border-radius: 9999px;
         font-size: 0.85rem;
         font-weight: 600;
         display: inline-block;
+        box-shadow: 0 0 14px rgba(245, 158, 11, 0.2);
     }
     .tool-tag {
-        background-color: #1E293B;
-        border: 1px solid #475569;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         color: #E2E8F0;
-        padding: 2px 8px;
-        border-radius: 6px;
-        font-size: 0.8rem;
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-size: 0.82rem;
         margin-right: 6px;
         margin-bottom: 6px;
         display: inline-block;
+        font-family: monospace;
+    }
+
+    /* Footer Liquid Glass Bar */
+    .liquid-footer {
+        margin-top: 50px;
+        padding: 24px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px 20px 0 0;
+        color: #94A3B8;
+        font-size: 0.9rem;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -107,10 +345,26 @@ VAULT_DIR.mkdir(exist_ok=True)
 UPLOADS_DIR.mkdir(exist_ok=True)
 
 # ---------------------------------------------------------
-# Sidebar Configuration
+# Sidebar: Creator Identity & Engine Settings
 # ---------------------------------------------------------
 with st.sidebar:
-    st.image("https://img.icons8.com/fluency/96/artificial-intelligence.png", width=64)
+    # Creator Profile Card
+    st.markdown("""
+    <div class="sidebar-profile">
+        <div class="sidebar-avatar">💎</div>
+        <div class="sidebar-name">x-estal nitish</div>
+        <div class="sidebar-role">AI Architect & Systems Engineer</div>
+        <div style="display:flex; justify-content:center; gap:8px; margin-top:10px;">
+            <a href="https://instagram.com/x_estal_nitish" target="_blank" class="social-link insta">
+                📸 @x_estal_nitish
+            </a>
+            <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" class="social-link linkedin">
+                💼 LinkedIn
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     st.markdown("### ⚙️ Engine Settings")
 
     provider = st.selectbox(
@@ -151,7 +405,7 @@ with st.sidebar:
     )
 
     if api_key_input:
-        st.caption("🟢 API Key configured")
+        st.caption("🟢 API Key active")
     else:
         st.caption("⚠️ API Key required to run the agent")
 
@@ -201,10 +455,25 @@ with st.sidebar:
     """)
 
 # ---------------------------------------------------------
-# Main UI Layout
+# Hero Liquid Glass Header
 # ---------------------------------------------------------
-st.markdown('<div class="main-title">🧭 DeepResearch Agent</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">Autonomous Multi-Step Investigation, Local Document Reading, Grounding Audit & Automated Deliverable Generation</div>', unsafe_allow_html=True)
+st.markdown("""
+<div class="hero-container">
+    <div class="hero-title">🧭 DeepResearch Agent</div>
+    <div class="hero-subtitle">
+        Autonomous Multi-Step Investigation, Local Document Reading, Grounding Audit & Automated Deliverable Generation powered by LangGraph.
+    </div>
+    <div class="creator-bar">
+        <span class="creator-badge">⚡ Created by <strong>x-estal nitish</strong></span>
+        <a href="https://instagram.com/x_estal_nitish" target="_blank" class="social-link insta">
+            📸 Instagram: @x_estal_nitish
+        </a>
+        <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" class="social-link linkedin">
+            💼 LinkedIn Profile
+        </a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 tabs = st.tabs(["🔬 New Research Mission", "📚 Research Vault", "🛠️ Tool Catalog", "🚀 Deployment Guide"])
 
@@ -215,8 +484,7 @@ with tabs[0]:
     col1, col2 = st.columns([3, 1])
 
     with col1:
-        # Preset queries
-        st.markdown("**Quick Presets:**")
+        st.markdown("**Quick Query Presets:**")
         p_col1, p_col2, p_col3 = st.columns(3)
         if p_col1.button("🤖 Computer Use Agents"):
             st.session_state["query_input"] = (
@@ -504,7 +772,7 @@ with tabs[3]:
     ```bash
     git init
     git add .
-    git commit -m "Initial commit: DeepResearch Agent Streamlit UI"
+    git commit -m "Deploy DeepResearch Agent to Streamlit Cloud"
     git branch -M main
     git remote add origin https://github.com/<your-username>/<your-repo-name>.git
     git push -u origin main
@@ -522,3 +790,24 @@ with tabs[3]:
     ```
     5. Click **Deploy**! 🚀
     """)
+
+# ---------------------------------------------------------
+# Liquid Glass Footer
+# ---------------------------------------------------------
+st.markdown("""
+<div class="liquid-footer">
+    <div>⚡ <strong>DeepResearch Agent</strong> &mdash; Engineered by <strong>x-estal nitish</strong></div>
+    <div style="margin-top: 8px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <a href="https://instagram.com/x_estal_nitish" target="_blank" style="color: #38BDF8; text-decoration: none;">
+            📸 Instagram: @x_estal_nitish
+        </a>
+        <span>&bull;</span>
+        <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" style="color: #818CF8; text-decoration: none;">
+            💼 LinkedIn: Nitish Kumar
+        </a>
+    </div>
+    <div style="margin-top: 6px; font-size: 0.8rem; color: #64748B;">
+        Autonomous LangGraph Agent Architecture &bull; Grounded Fact-Checking &bull; Multi-Tool Intelligence
+    </div>
+</div>
+""", unsafe_allow_html=True)

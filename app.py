@@ -23,308 +23,361 @@ from tools import (
 
 # Page configuration
 st.set_page_config(
-    page_title="DeepResearch Agent | by x-estal nitish",
-    page_icon="💎",
+    page_title="DeepResearch Intelligence | by x-estal nitish",
+    page_icon="🔮",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # ---------------------------------------------------------
-# Liquid Glass Theme & Styling (Glassmorphism 3.0)
+# Cyber-Luxe Liquid Glass Styling (Glassmorphism 3.5)
 # ---------------------------------------------------------
 st.markdown("""
 <style>
-    /* Global Background & Atmospheric Mesh */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    /* Global Obsidian Liquid Canvas */
     .stApp {
         background: 
-            radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.16) 0px, transparent 45%),
-            radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.18) 0px, transparent 45%),
-            radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.08) 0px, transparent 55%),
-            radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.14) 0px, transparent 45%),
-            radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.12) 0px, transparent 45%),
-            #070B14;
+            radial-gradient(ellipse 90% 60% at 50% -20%, rgba(56, 189, 248, 0.22) 0%, transparent 70%),
+            radial-gradient(ellipse 70% 50% at 100% 30%, rgba(168, 85, 247, 0.2) 0%, transparent 60%),
+            radial-gradient(ellipse 80% 60% at 0% 70%, rgba(236, 72, 153, 0.16) 0%, transparent 65%),
+            radial-gradient(ellipse 90% 70% at 70% 100%, rgba(14, 165, 233, 0.18) 0%, transparent 60%),
+            #060913;
         color: #F8FAFC;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Sidebar Glass Styling */
+    /* Ultra-Frosted Sidebar */
     section[data-testid="stSidebar"] {
-        background: rgba(10, 16, 30, 0.72) !important;
-        backdrop-filter: blur(24px) saturate(190%) !important;
-        -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+        background: rgba(8, 14, 28, 0.75) !important;
+        backdrop-filter: blur(28px) saturate(210%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
         border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 10px 0 35px rgba(0, 0, 0, 0.5) !important;
     }
 
-    /* Liquid Glass Cards */
-    .glass-card {
-        background: rgba(255, 255, 255, 0.035);
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 18px;
-        padding: 20px 24px;
-        margin-bottom: 16px;
-        box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .glass-card:hover {
-        border-color: rgba(56, 189, 248, 0.35);
-        box-shadow: 0 16px 42px 0 rgba(14, 165, 233, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-        transform: translateY(-2px);
-    }
-
-    /* Hero Branding Header */
-    .hero-container {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
-        backdrop-filter: blur(28px) saturate(200%);
-        -webkit-backdrop-filter: blur(28px) saturate(200%);
+    /* Executive Hero Container */
+    .hero-glass-box {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.015) 100%);
+        backdrop-filter: blur(30px) saturate(220%);
+        -webkit-backdrop-filter: blur(30px) saturate(220%);
         border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 24px;
-        padding: 28px 32px;
+        border-radius: 26px;
+        padding: 32px 36px;
         margin-bottom: 24px;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        box-shadow: 
+            0 24px 60px rgba(0, 0, 0, 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 0 40px rgba(56, 189, 248, 0.05);
     }
-    .hero-container::before {
+    .hero-glass-box::before {
         content: '';
         position: absolute;
-        top: -60px;
-        right: -60px;
-        width: 220px;
-        height: 220px;
-        background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%);
-        filter: blur(35px);
+        top: -80px;
+        right: -80px;
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(168, 85, 247, 0.2) 50%, transparent 75%);
+        filter: blur(40px);
         pointer-events: none;
     }
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(52, 211, 153, 0.35);
+        color: #6EE7B7;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 9999px;
+        margin-bottom: 12px;
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+    }
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #10B981;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #10B981;
+        animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(0.85); }
+    }
     .hero-title {
-        font-size: 2.6rem;
-        font-weight: 900;
-        letter-spacing: -0.03em;
-        background: linear-gradient(135deg, #FFFFFF 0%, #38BDF8 40%, #818CF8 75%, #C084FC 100%);
+        font-size: 2.85rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1.15;
+        background: linear-gradient(135deg, #FFFFFF 20%, #7DD3FC 55%, #C084FC 85%, #F472B6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 6px;
-        line-height: 1.15;
+        margin-bottom: 10px;
     }
-    .hero-subtitle {
-        font-size: 1.05rem;
+    .hero-desc {
+        font-size: 1.08rem;
         color: #94A3B8;
-        font-weight: 400;
-        margin-bottom: 16px;
-        max-width: 850px;
+        line-height: 1.6;
+        max-width: 860px;
+        margin-bottom: 20px;
     }
 
-    /* Creator Pill & Socials */
-    .creator-bar {
+    /* Creator Profile & Social Pill Bar */
+    .author-pill-bar {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         gap: 12px;
-        margin-top: 14px;
-        padding-top: 16px;
+        padding-top: 18px;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .creator-badge {
+    .author-chip {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(14, 165, 233, 0.12);
-        border: 1px solid rgba(56, 189, 248, 0.3);
-        color: #E0F2FE;
-        padding: 6px 14px;
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.12));
+        border: 1px solid rgba(56, 189, 248, 0.35);
+        color: #F0F9FF;
+        padding: 7px 16px;
         border-radius: 9999px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+        font-size: 0.92rem;
+        font-weight: 700;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
     }
-    .social-link {
+    .social-btn {
         display: inline-flex;
         align-items: center;
-        gap: 7px;
+        gap: 8px;
         background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: #F1F5F9 !important;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #F8FAFC !important;
         text-decoration: none !important;
-        padding: 6px 16px;
+        padding: 7px 18px;
         border-radius: 9999px;
-        font-size: 0.86rem;
-        font-weight: 500;
-        backdrop-filter: blur(12px);
-        transition: all 0.25s ease;
+        font-size: 0.88rem;
+        font-weight: 600;
+        backdrop-filter: blur(14px);
+        transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-    .social-link:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.28);
+    .social-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
-    .social-link.insta:hover {
-        background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(253, 29, 29, 0.25));
-        border-color: #E1306C;
-        box-shadow: 0 0 18px rgba(225, 48, 108, 0.35);
+    .social-btn.insta:hover {
+        background: linear-gradient(135deg, rgba(225, 48, 108, 0.35), rgba(253, 29, 29, 0.3));
+        border-color: #F43F5E;
+        box-shadow: 0 0 22px rgba(244, 63, 94, 0.4);
     }
-    .social-link.linkedin:hover {
-        background: rgba(10, 102, 194, 0.25);
-        border-color: #0A66C2;
-        box-shadow: 0 0 18px rgba(10, 102, 194, 0.35);
+    .social-btn.linkedin:hover {
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.35), rgba(10, 102, 194, 0.3));
+        border-color: #38BDF8;
+        box-shadow: 0 0 22px rgba(56, 189, 248, 0.4);
     }
 
-    /* Creator Sidebar Profile Card */
-    .sidebar-profile {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 16px;
-        padding: 16px;
-        margin-bottom: 20px;
-        text-align: center;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    /* Metric Quick Bar */
+    .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 14px;
+        margin-bottom: 24px;
     }
-    .sidebar-avatar {
-        width: 64px;
-        height: 64px;
+    .metric-pill {
+        background: rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 18px;
+        padding: 16px 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        transition: all 0.25s ease;
+    }
+    .metric-pill:hover {
+        border-color: rgba(56, 189, 248, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
+    }
+    .metric-num {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #F8FAFC;
+        line-height: 1.2;
+    }
+    .metric-sub {
+        font-size: 0.82rem;
+        color: #94A3B8;
+        font-weight: 500;
+        margin-top: 2px;
+    }
+
+    /* Sidebar Developer Profile */
+    .dev-profile-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 20px;
+        padding: 22px 18px;
+        margin-bottom: 24px;
+        text-align: center;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    .dev-avatar-ring {
+        width: 72px;
+        height: 72px;
         border-radius: 50%;
         background: linear-gradient(135deg, #0EA5E9, #8B5CF6, #EC4899);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 26px;
-        font-weight: 800;
+        font-size: 30px;
         color: white;
-        margin-bottom: 10px;
-        box-shadow: 0 0 20px rgba(14, 165, 233, 0.45);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-    .sidebar-name {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: #F8FAFC;
-        margin-bottom: 2px;
-    }
-    .sidebar-role {
-        font-size: 0.8rem;
-        color: #94A3B8;
         margin-bottom: 12px;
-        letter-spacing: 0.02em;
+        box-shadow: 0 0 25px rgba(14, 165, 233, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.35);
+    }
+    .dev-name {
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #F8FAFC;
+    }
+    .dev-title {
+        font-size: 0.82rem;
+        color: #94A3B8;
+        font-weight: 500;
+        margin-bottom: 14px;
     }
 
-    /* Liquid Glass Buttons */
+    /* Liquid Glass Action Button */
     .stButton > button {
-        background: linear-gradient(135deg, rgba(14, 165, 233, 0.85) 0%, rgba(99, 102, 241, 0.85) 50%, rgba(168, 85, 247, 0.85) 100%) !important;
+        background: linear-gradient(135deg, #0EA5E9 0%, #6366F1 50%, #A855F7 100%) !important;
         color: #FFFFFF !important;
-        font-weight: 600 !important;
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
-        border-radius: 12px !important;
-        padding: 10px 24px !important;
-        backdrop-filter: blur(12px) !important;
-        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+        border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        border-radius: 14px !important;
+        padding: 14px 28px !important;
+        backdrop-filter: blur(14px) !important;
+        box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
     .stButton > button:hover {
-        transform: translateY(-2px) scale(1.01) !important;
-        box-shadow: 0 14px 32px rgba(14, 165, 233, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
-        border-color: rgba(255, 255, 255, 0.45) !important;
+        transform: translateY(-3px) scale(1.008) !important;
+        box-shadow: 0 18px 45px rgba(99, 102, 241, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+        border-color: rgba(255, 255, 255, 0.6) !important;
     }
 
-    /* Tabs Custom Styling */
+    /* Custom Modern Segmented Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        background: rgba(255, 255, 255, 0.035) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 16px !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 18px !important;
         padding: 6px !important;
-        gap: 6px !important;
-        backdrop-filter: blur(16px) !important;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+        gap: 8px !important;
+        backdrop-filter: blur(20px) !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25) !important;
+        margin-bottom: 22px !important;
     }
     .stTabs [data-baseweb="tab"] {
-        border-radius: 10px !important;
+        border-radius: 12px !important;
         color: #94A3B8 !important;
-        font-weight: 500 !important;
-        padding: 8px 18px !important;
+        font-weight: 600 !important;
+        font-size: 0.95rem !important;
+        padding: 10px 24px !important;
         transition: all 0.25s ease !important;
         border: none !important;
     }
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)) !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
         color: #F8FAFC !important;
-        font-weight: 700 !important;
-        border: 1px solid rgba(255, 255, 255, 0.18) !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
     }
 
     /* Inputs, Textareas, Selectboxes */
     .stTextInput > div > div, .stTextArea > div > div, .stSelectbox > div > div {
-        background: rgba(15, 23, 42, 0.55) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 12px !important;
-        backdrop-filter: blur(14px) !important;
+        background: rgba(11, 18, 36, 0.65) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 14px !important;
+        backdrop-filter: blur(16px) !important;
         color: #F8FAFC !important;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4) !important;
     }
     .stTextInput > div > div:focus-within, .stTextArea > div > div:focus-within {
         border-color: #38BDF8 !important;
-        box-shadow: 0 0 18px rgba(56, 189, 248, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.35), inset 0 2px 5px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* Expanders */
+    /* Expanders & Deliverable Cards */
     div[data-testid="stExpander"] {
-        background: rgba(255, 255, 255, 0.025) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 14px !important;
-        backdrop-filter: blur(14px) !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
-        margin-bottom: 12px !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.09) !important;
+        border-radius: 16px !important;
+        backdrop-filter: blur(18px) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+        margin-bottom: 14px !important;
     }
 
     /* Badges */
     .badge-pass {
-        background: rgba(16, 185, 129, 0.15);
+        background: rgba(16, 185, 129, 0.16);
         color: #34D399;
-        border: 1px solid rgba(52, 211, 153, 0.35);
-        padding: 4px 14px;
+        border: 1px solid rgba(52, 211, 153, 0.4);
+        padding: 5px 16px;
         border-radius: 9999px;
-        font-size: 0.85rem;
-        font-weight: 600;
+        font-size: 0.88rem;
+        font-weight: 700;
         display: inline-block;
-        box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
+        box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
     }
     .badge-retry {
-        background: rgba(245, 158, 11, 0.15);
+        background: rgba(245, 158, 11, 0.16);
         color: #FBBF24;
-        border: 1px solid rgba(251, 191, 36, 0.35);
-        padding: 4px 14px;
+        border: 1px solid rgba(251, 191, 36, 0.4);
+        padding: 5px 16px;
         border-radius: 9999px;
-        font-size: 0.85rem;
-        font-weight: 600;
+        font-size: 0.88rem;
+        font-weight: 700;
         display: inline-block;
-        box-shadow: 0 0 14px rgba(245, 158, 11, 0.2);
-    }
-    .tool-tag {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #E2E8F0;
-        padding: 4px 10px;
-        border-radius: 8px;
-        font-size: 0.82rem;
-        margin-right: 6px;
-        margin-bottom: 6px;
-        display: inline-block;
-        font-family: monospace;
+        box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
     }
 
-    /* Footer Liquid Glass Bar */
+    /* Vault Report Item */
+    .vault-card {
+        background: rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 18px 22px;
+        margin-bottom: 14px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        transition: all 0.25s ease;
+    }
+    .vault-card:hover {
+        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 12px 32px rgba(14, 165, 233, 0.15);
+        transform: translateY(-2px);
+    }
+
+    /* Footer */
     .liquid-footer {
-        margin-top: 50px;
-        padding: 24px;
+        margin-top: 60px;
+        padding: 30px 20px;
         text-align: center;
         background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
         border-top: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px 20px 0 0;
+        border-radius: 24px 24px 0 0;
         color: #94A3B8;
-        font-size: 0.9rem;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -348,38 +401,36 @@ UPLOADS_DIR.mkdir(exist_ok=True)
 # Sidebar: Creator Identity & Engine Settings
 # ---------------------------------------------------------
 with st.sidebar:
-    # Creator Profile Card
     st.markdown("""
-    <div class="sidebar-profile">
-        <div class="sidebar-avatar">💎</div>
-        <div class="sidebar-name">x-estal nitish</div>
-        <div class="sidebar-role">AI Architect & Systems Engineer</div>
-        <div style="display:flex; justify-content:center; gap:8px; margin-top:10px;">
-            <a href="https://instagram.com/x_estal_nitish" target="_blank" class="social-link insta">
+    <div class="dev-profile-card">
+        <div class="dev-avatar-ring">⚡</div>
+        <div class="dev-name">x-estal nitish</div>
+        <div class="dev-title">AI Research Architect</div>
+        <div style="display:flex; justify-content:center; gap:8px; margin-top:8px;">
+            <a href="https://instagram.com/x_estal_nitish" target="_blank" class="social-btn insta">
                 📸 @x_estal_nitish
             </a>
-            <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" class="social-link linkedin">
+            <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" class="social-btn linkedin">
                 💼 LinkedIn
             </a>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("### ⚙️ Engine Settings")
+    st.markdown("### ⚙️ Engine Parameters")
 
     provider = st.selectbox(
-        "LLM Provider",
+        "Inference Engine",
         options=["Google Gemini", "Groq", "OpenAI"],
         index=0,
-        help="Select the AI reasoning backend. Google Gemini works seamlessly with free-tier keys."
+        help="Select reasoning engine. Google Gemini is recommended with the active key."
     )
 
-    # Provider specific default models & keys
     if provider == "Google Gemini":
         model_options = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"]
         default_key = get_env_or_secret("GOOGLE_API_KEY")
         key_label = "Google API Key"
-        key_help = "Get your key from https://aistudio.google.com/"
+        key_help = "Active API Key loaded from .env / Secrets"
     elif provider == "Groq":
         model_options = [
             "llama-3.3-70b-versatile",
@@ -389,14 +440,14 @@ with st.sidebar:
         ]
         default_key = get_env_or_secret("GROQ_API_KEY")
         key_label = "Groq API Key"
-        key_help = "Get your key from https://console.groq.com/keys"
+        key_help = "Get key from console.groq.com"
     else:
         model_options = ["gpt-4o-mini", "gpt-4o", "o3-mini"]
         default_key = get_env_or_secret("OPENAI_API_KEY")
         key_label = "OpenAI API Key"
-        key_help = "Get your key from https://platform.openai.com/api-keys"
+        key_help = "Get key from platform.openai.com"
 
-    selected_model = st.selectbox("Model Name", options=model_options)
+    selected_model = st.selectbox("Active Model", options=model_options)
     api_key_input = st.text_input(
         key_label,
         value=default_key,
@@ -405,117 +456,146 @@ with st.sidebar:
     )
 
     if api_key_input:
-        st.caption("🟢 API Key active")
+        st.caption("🟢 API Key Ready")
     else:
-        st.caption("⚠️ API Key required to run the agent")
+        st.caption("⚠️ API Key required")
 
     temperature = st.slider(
-        "Temperature",
+        "Reasoning Temperature",
         min_value=0.0,
         max_value=1.0,
         value=0.1,
         step=0.05,
-        help="Lower values yield more factual, rigorous grounding."
+        help="Lower values enforce rigorous grounded factual verification."
     )
 
     st.markdown("---")
-    st.markdown("### 🎯 Investigation Scope")
+    st.markdown("### 🎯 Investigation Controls")
 
     search_depth = st.selectbox(
-        "Search Depth",
+        "Investigation Depth",
         options=["basic", "medium", "advanced"],
         index=1,
-        help="Controls number of tool cycles and depth of queries."
+        help="Controls number of autonomous exploration hops."
     )
 
     output_type = st.selectbox(
-        "Output Format",
+        "Report Architecture",
         options=["deep_dive", "summary", "bullet_points"],
         index=0,
-        help="Format structure produced by the Lead Delivery Analyst."
+        help="Delivery analyst structuring."
     )
 
     export_format = st.selectbox(
-        "Export Deliverable",
+        "Vault Export Format",
         options=["markdown", "pdf", "docx"],
         index=0,
-        help="Document format automatically written to the research vault."
+        help="Document format persisted to the research vault."
     )
 
     st.markdown("---")
-    st.markdown("### 🧰 Bound Toolsets")
     total_tools = len(ALL_RESEARCH_TOOLS) + len(FILE_OPS_TOOLS) + len(DOC_GENERATION_TOOLS) + len(TEXT_NLP_TOOLS) + len(GEO_WEATHER_TOOLS)
-    st.write(f"**Total Registered Tools:** `{total_tools}`")
-    st.markdown(f"""
-    - 🌐 **Web & Academic**: `{len(ALL_RESEARCH_TOOLS)}` tools
-    - 📁 **File & PDF Ops**: `{len(FILE_OPS_TOOLS)}` tools
-    - 📑 **Doc Generation**: `{len(DOC_GENERATION_TOOLS)}` tools
-    - 🔤 **Text NLP**: `{len(TEXT_NLP_TOOLS)}` tools
-    - ⛅ **Geo & Weather**: `{len(GEO_WEATHER_TOOLS)}` tools
-    """)
+    st.markdown(f"**⚡ Neural Tool Count:** `{total_tools} Active`")
+    st.caption("Integrated across Web, ArXiv, Wikipedia, Local Readers, NLP, and Doc Exporters.")
 
 # ---------------------------------------------------------
-# Hero Liquid Glass Header
+# Hero Master Liquid Glass Header
 # ---------------------------------------------------------
 st.markdown("""
-<div class="hero-container">
-    <div class="hero-title">🧭 DeepResearch Agent</div>
-    <div class="hero-subtitle">
-        Autonomous Multi-Step Investigation, Local Document Reading, Grounding Audit & Automated Deliverable Generation powered by LangGraph.
+<div class="hero-glass-box">
+    <div class="status-badge">
+        <span class="status-dot"></span>
+        Neural Agent System Active
     </div>
-    <div class="creator-bar">
-        <span class="creator-badge">⚡ Created by <strong>x-estal nitish</strong></span>
-        <a href="https://instagram.com/x_estal_nitish" target="_blank" class="social-link insta">
+    <div class="hero-title">DEEP RESEARCH INTELLIGENCE</div>
+    <div class="hero-desc">
+        Next-generation autonomous research engine powered by LangGraph. Conducts multi-hop web retrieval, 
+        inspects local documents & PDFs, enforces anti-hallucination fact audits, and persists verified reports.
+    </div>
+    <div class="author-pill-bar">
+        <span class="author-chip">⚡ Engineered by <strong>x-estal nitish</strong></span>
+        <a href="https://instagram.com/x_estal_nitish" target="_blank" class="social-btn insta">
             📸 Instagram: @x_estal_nitish
         </a>
-        <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" class="social-link linkedin">
-            💼 LinkedIn Profile
+        <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" class="social-btn linkedin">
+            💼 LinkedIn: Nitish Kumar
         </a>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-tabs = st.tabs(["🔬 New Research Mission", "📚 Research Vault", "🛠️ Tool Catalog", "🚀 Deployment Guide"])
+# ---------------------------------------------------------
+# Quick Metrics Grid
+# ---------------------------------------------------------
+st.markdown(f"""
+<div class="metric-grid">
+    <div class="metric-pill">
+        <div class="metric-num">14+</div>
+        <div class="metric-sub">🌐 Web, ArXiv & Wiki Engines</div>
+    </div>
+    <div class="metric-pill">
+        <div class="metric-num">5+</div>
+        <div class="metric-sub">📁 Local Document & PDF Parsers</div>
+    </div>
+    <div class="metric-pill">
+        <div class="metric-num">100%</div>
+        <div class="metric-sub">🛡️ Grounding Fact-Audit Loop</div>
+    </div>
+    <div class="metric-pill">
+        <div class="metric-num">3 Formats</div>
+        <div class="metric-sub">💾 Markdown, PDF & DOCX Vault</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # ---------------------------------------------------------
-# Tab 1: New Research Mission
+# Main Tabs (Deployment guide removed as requested)
+# ---------------------------------------------------------
+tabs = st.tabs([
+    "⚡ Autonomous Research Studio", 
+    "🗄️ Intelligence Vault", 
+    "🧩 Neural Tools Matrix"
+])
+
+# ---------------------------------------------------------
+# Tab 1: Autonomous Research Studio
 # ---------------------------------------------------------
 with tabs[0]:
-    col1, col2 = st.columns([3, 1])
+    col_main, col_side = st.columns([3, 1])
 
-    with col1:
-        st.markdown("**Quick Query Presets:**")
-        p_col1, p_col2, p_col3 = st.columns(3)
-        if p_col1.button("🤖 Computer Use Agents"):
+    with col_main:
+        st.markdown("**💡 Mission Inspiration Presets:**")
+        p1, p2, p3 = st.columns(3)
+        if p1.button("🤖 Computer Use Agents"):
             st.session_state["query_input"] = (
                 "Analyze GUI grounding architectures in Computer Use Agents (OmniParser vs Set-of-Marks). "
                 "Compare latency, action space predictability, and token overhead."
             )
-        if p_col2.button("⚛️ Quantum Computing 2026"):
+        if p2.button("⚛️ Quantum Computing 2026"):
             st.session_state["query_input"] = (
                 "Investigate recent breakthroughs in topological qubits and quantum error correction in 2025-2026. "
                 "Highlight key metrics, physical qubit overhead, and commercial roadmap."
             )
-        if p_col3.button("🧠 Long Context vs RAG"):
+        if p3.button("🧠 Long Context vs Graph RAG"):
             st.session_state["query_input"] = (
                 "Deep dive comparison: 1M+ token context windows vs Agentic Graph RAG for enterprise documentation retrieval. "
                 "Evaluate retrieval accuracy, cost per query, and hallucination rates."
             )
 
         query = st.text_area(
-            "Enter Research Objective or Investigation Query:",
+            "Research Objective / Investigation Prompt:",
             value=st.session_state.get("query_input", ""),
-            height=130,
-            placeholder="e.g. Compare modern vector search indexes (HNSW vs DiskANN) for billion-scale embeddings..."
+            height=140,
+            placeholder="Describe your research goal in detail (e.g., 'Compare HNSW vs DiskANN vector indexes on 100M embeddings...')"
         )
 
-    with col2:
-        st.markdown("**Attach Local Documents:**")
+    with col_side:
+        st.markdown("**📂 Attach Local Material:**")
         uploaded_files = st.file_uploader(
-            "Upload reference PDFs / files",
+            "Upload reference documents",
             type=["pdf", "txt", "md", "docx", "csv"],
             accept_multiple_files=True,
-            help="Files are saved locally and passed to the agent's file reader tools before web queries run."
+            help="Files are stored locally and inspected by FILE_OPS_TOOLS before initiating external web queries."
         )
 
         attached_paths = []
@@ -525,17 +605,18 @@ with tabs[0]:
                 with open(save_path, "wb") as f:
                     f.write(up_file.getbuffer())
                 attached_paths.append(str(save_path))
-            st.success(f"Attached {len(attached_paths)} file(s)")
+            st.success(f"Attached {len(attached_paths)} document(s)")
 
-    start_button = st.button("🚀 Launch Autonomous Research", type="primary", use_container_width=True)
+    launch_col1, launch_col2 = st.columns([1, 1])
+    with launch_col1:
+        start_button = st.button("🚀 INITIATE AUTONOMOUS INVESTIGATION", type="primary", use_container_width=True)
 
     if start_button:
         if not query.strip():
-            st.error("Please enter a research query before starting.")
+            st.error("Please enter a research objective before launching.")
         elif not api_key_input.strip():
-            st.error(f"Please enter your {key_label} in the sidebar to proceed.")
+            st.error(f"Please provide your {key_label} in the sidebar.")
         else:
-            # Set key into environment temporarily for tool calls if needed
             if provider == "Google Gemini":
                 os.environ["GOOGLE_API_KEY"] = api_key_input.strip()
             elif provider == "Groq":
@@ -544,14 +625,14 @@ with tabs[0]:
                 os.environ["OPENAI_API_KEY"] = api_key_input.strip()
 
             st.markdown("---")
-            st.markdown("### 🔄 Execution Progress & Agent Thought Stream")
+            st.markdown("### 🔄 Autonomous Investigation Stream")
 
             progress_bar = st.progress(0.0)
             status_placeholder = st.empty()
             log_container = st.container()
 
             # Initialize Agent
-            with st.spinner("Compiling LangGraph State Machine & Binding Tools..."):
+            with st.spinner("Compiling LangGraph State Machine & Orchestrating Nodes..."):
                 try:
                     agent = create_research_agent(
                         provider=provider,
@@ -560,7 +641,7 @@ with tabs[0]:
                         temperature=temperature
                     )
                 except Exception as e:
-                    st.error(f"Failed to initialize agent: {e}")
+                    st.error(f"Initialization Error: {e}")
                     agent = None
 
             if agent:
@@ -596,22 +677,19 @@ with tabs[0]:
                 }
 
                 node_icons = {
-                    "decomposer": "🎯 Decomposer",
-                    "investigator": "🕵️ Investigator",
+                    "decomposer": "🎯 Query Decomposer",
+                    "investigator": "🕵️ Investigator Agent",
                     "investigation_tools": "🛠️ Tool Executor",
-                    "synthesizer": "🧬 Synthesizer",
+                    "synthesizer": "🧬 Research Synthesizer",
                     "reporter": "📝 Lead Reporter",
                     "auditor": "🛡️ Fact-Check Auditor",
                     "delivery_initiator": "📦 Delivery Initiator",
-                    "delivery_agent": "🚚 Delivery Agent",
-                    "delivery_tools": "💾 Storage Tools",
-                    "finalize": "🏁 Final Deliverable"
+                    "delivery_agent": "🚚 Storage Agent",
+                    "delivery_tools": "💾 Document Exporter",
+                    "finalize": "🏁 Intelligence Vault Delivery"
                 }
 
                 final_report_text = ""
-                research_notes_text = ""
-                audit_passed_flag = False
-                audit_feedback_text = ""
                 start_time = time.time()
 
                 try:
@@ -620,48 +698,46 @@ with tabs[0]:
                             progress_val = step_weights.get(node_name, 0.5)
                             progress_bar.progress(progress_val)
                             title_display = node_icons.get(node_name, f"Node: {node_name}")
-                            status_placeholder.info(f"Currently active: **{title_display}**...")
+                            status_placeholder.info(f"Active Node: **{title_display}**...")
 
                             with log_container:
                                 with st.expander(f"{title_display} completed", expanded=(node_name in ["decomposer", "auditor", "finalize"])):
                                     if "generated_search_queries" in state_update:
-                                        st.markdown(f"**Targeted Queries Formulated:**\n`{state_update['generated_search_queries']}`")
+                                        st.markdown(f"**Targeted Search Queries:**\n`{state_update['generated_search_queries']}`")
 
                                     if "messages" in state_update:
                                         last_msg = state_update["messages"][-1]
                                         if hasattr(last_msg, "tool_calls") and last_msg.tool_calls:
-                                            st.markdown("**Invoking Tools:**")
+                                            st.markdown("**Dispatched Tool Invocations:**")
                                             for tc in last_msg.tool_calls:
-                                                st.markdown(f"- `<{tc.get('name')}>` with args: `{tc.get('args')}`")
+                                                st.markdown(f"- `<{tc.get('name')}>` with parameters: `{tc.get('args')}`")
 
                                     if "research_notes" in state_update and state_update["research_notes"]:
-                                        research_notes_text = state_update["research_notes"]
-                                        st.markdown("**Extracted Factual Evidence Trail:**")
-                                        st.text_area("Research Notes", research_notes_text, height=180)
+                                        st.markdown("**Synthesized Evidence Trail:**")
+                                        st.text_area("Research Notes", state_update["research_notes"], height=170)
 
                                     if "draft_report" in state_update and state_update["draft_report"]:
-                                        st.markdown("**Draft Report Compiled** (awaiting grounding audit)")
+                                        st.markdown("**Draft Analytical Report Formulated** (Passing to Auditor)")
 
                                     if "audit_passed" in state_update:
-                                        audit_passed_flag = state_update["audit_passed"]
-                                        audit_feedback_text = state_update.get("audit_feedback") or "PASS"
-                                        if audit_passed_flag:
-                                            st.markdown('<span class="badge-pass">✅ AUDIT PASSED: Grounded in Verified Data</span>', unsafe_allow_html=True)
+                                        passed = state_update["audit_passed"]
+                                        fb = state_update.get("audit_feedback") or "PASS"
+                                        if passed:
+                                            st.markdown('<span class="badge-pass">✅ GROUNDING AUDIT PASSED: 100% Verified Evidence</span>', unsafe_allow_html=True)
                                         else:
-                                            st.markdown(f'<span class="badge-retry">⚠️ AUDIT CORRECTION REQUESTED: {audit_feedback_text}</span>', unsafe_allow_html=True)
+                                            st.markdown(f'<span class="badge-retry">⚠️ RE-EVALUATION REQUIRED: {fb}</span>', unsafe_allow_html=True)
 
                                     if "final" in state_update and state_update["final"]:
                                         final_report_text = state_update["final"]
-                                        st.success("Research Mission Finalized Successfully!")
+                                        st.success("Investigation Finalized & Stored in Vault!")
 
                     total_elapsed = round(time.time() - start_time, 2)
                     progress_bar.progress(1.0)
-                    status_placeholder.success(f"Mission Completed in {total_elapsed}s!")
+                    status_placeholder.success(f"Investigation Complete in {total_elapsed}s!")
 
-                    # Render Final Result Section
                     if final_report_text:
                         st.markdown("---")
-                        st.markdown("## 📑 Finalized Analytical Deliverable")
+                        st.markdown("## 📑 Verified Analytical Deliverable")
                         st.markdown(final_report_text)
 
                         # Download button
@@ -670,7 +746,7 @@ with tabs[0]:
                         md_filename = f"report_{clean_q}_{timestamp_str}.md"
 
                         st.download_button(
-                            label="📥 Download Verified Markdown Report",
+                            label="📥 Download Verified Markdown Deliverable",
                             data=final_report_text,
                             file_name=md_filename,
                             mime="text/markdown",
@@ -678,40 +754,40 @@ with tabs[0]:
                         )
 
                 except Exception as ex:
-                    st.error(f"Error during agent execution: {str(ex)}")
+                    st.error(f"Execution Error: {str(ex)}")
 
 # ---------------------------------------------------------
-# Tab 2: Research Vault
+# Tab 2: Intelligence Vault
 # ---------------------------------------------------------
 with tabs[1]:
-    st.markdown("### 🗄️ Persisted Deliverables Vault")
-    st.markdown("All generated reports and exports are safely stored in `research_vault/`.")
+    st.markdown("### 🗄️ Persisted Intelligence Vault")
+    st.markdown("All completed research missions and generated documents are stored permanently in `research_vault/`.")
 
     saved_files = list(VAULT_DIR.glob("*.*"))
     if not saved_files:
-        st.info("No saved research reports yet. Launch a mission in the first tab to populate the vault.")
+        st.info("The intelligence vault is currently empty. Run an investigation in the studio to populate it.")
     else:
-        st.write(f"**Found {len(saved_files)} persisted file(s):**")
+        st.write(f"**Found {len(saved_files)} persisted deliverable(s):**")
         for fpath in sorted(saved_files, key=os.path.getmtime, reverse=True):
-            col_icon, col_info, col_action = st.columns([1, 6, 3])
             ext = fpath.suffix.lower()
             icon = "📄" if ext == ".md" else ("📕" if ext == ".pdf" else "📘")
 
-            with col_icon:
-                st.markdown(f"### {icon}")
-            with col_info:
+            c_icon, c_info, c_action = st.columns([1, 6, 3])
+            with c_icon:
+                st.markdown(f"## {icon}")
+            with c_info:
                 st.markdown(f"**{fpath.name}**")
                 file_size_kb = round(os.path.getsize(fpath) / 1024, 2)
                 mod_time = datetime.fromtimestamp(os.path.getmtime(fpath)).strftime("%Y-%m-%d %H:%M:%S")
-                st.caption(f"Size: {file_size_kb} KB | Created: {mod_time}")
-            with col_action:
+                st.caption(f"Size: {file_size_kb} KB &bull; Generated: {mod_time}")
+            with c_action:
                 with open(fpath, "rb") as fl:
                     bytes_data = fl.read()
                 st.download_button(
                     label=f"Download {fpath.name}",
                     data=bytes_data,
                     file_name=fpath.name,
-                    key=f"dl_{fpath.name}"
+                    key=f"vault_dl_{fpath.name}"
                 )
 
             with st.expander(f"Preview {fpath.name}"):
@@ -722,91 +798,62 @@ with tabs[1]:
                     except Exception:
                         st.text(fpath.read_text(errors="ignore"))
                 else:
-                    st.info("Binary document format. Use the download button to view.")
+                    st.info("Binary format. Use the download button to inspect.")
             st.markdown("---")
 
 # ---------------------------------------------------------
-# Tab 3: Tool Catalog
+# Tab 3: Neural Tools Matrix
 # ---------------------------------------------------------
 with tabs[2]:
-    st.markdown("### 🛠️ Agent Tools Suite & Capabilities")
-    st.markdown("The agent has autonomous access to tools across 5 specialized domains:")
+    st.markdown("### 🧩 Neural Tool Catalog & Registry")
+    st.markdown("The autonomous agent dispatches tool calls dynamically from 5 specialized capability clusters:")
 
-    t1, t2 = st.columns(2)
-    with t1:
-        st.markdown("#### 🌐 Research & Web Intelligence")
+    col_t1, col_t2 = st.columns(2)
+    with col_t1:
+        st.markdown("#### 🌐 Web & Academic Intelligence")
         for t in ALL_RESEARCH_TOOLS:
             doc = (t.description or "No description").strip().splitlines()[0]
             st.markdown(f"- **`{t.name}`**: {doc}")
 
-        st.markdown("#### 📁 File & Workspace Operations")
+        st.markdown("#### 📁 File Ops & PDF Readers")
         for t in FILE_OPS_TOOLS:
             doc = (t.description or "No description").strip().splitlines()[0]
             st.markdown(f"- **`{t.name}`**: {doc}")
 
-    with t2:
-        st.markdown("#### 📑 Document Generation")
+    with col_t2:
+        st.markdown("#### 📑 Document Exporters")
         for t in DOC_GENERATION_TOOLS:
             doc = (t.description or "No description").strip().splitlines()[0]
             st.markdown(f"- **`{t.name}`**: {doc}")
 
-        st.markdown("#### 🔤 Text & NLP")
+        st.markdown("#### 🔤 NLP & Text Extraction")
         for t in TEXT_NLP_TOOLS:
             doc = (t.description or "No description").strip().splitlines()[0]
             st.markdown(f"- **`{t.name}`**: {doc}")
 
-        st.markdown("#### ⛅ Geo & Weather")
+        st.markdown("#### ⛅ Environmental & Weather")
         for t in GEO_WEATHER_TOOLS:
             doc = (t.description or "No description").strip().splitlines()[0]
             st.markdown(f"- **`{t.name}`**: {doc}")
-
-# ---------------------------------------------------------
-# Tab 4: Deployment Guide
-# ---------------------------------------------------------
-with tabs[3]:
-    st.markdown("### ☁️ Streamlit Community Cloud Deployment Guide")
-    st.markdown("""
-    This application is fully prepped for 1-click deployment on [Streamlit Community Cloud](https://streamlit.io/cloud).
-
-    #### 1. Push to GitHub
-    ```bash
-    git init
-    git add .
-    git commit -m "Deploy DeepResearch Agent to Streamlit Cloud"
-    git branch -M main
-    git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-    git push -u origin main
-    ```
-
-    #### 2. Deploy on Streamlit Cloud
-    1. Log in to **[share.streamlit.io](https://share.streamlit.io/)**.
-    2. Click **New app** and select your GitHub repository.
-    3. Set **Main file path** to `app.py`.
-    4. Click **Advanced Settings** -> **Secrets** and paste your API keys:
-    ```toml
-    GOOGLE_API_KEY = "your-google-gemini-key"
-    GROQ_API_KEY = "your-groq-key"
-    OPENAI_API_KEY = "your-openai-key"
-    ```
-    5. Click **Deploy**! 🚀
-    """)
 
 # ---------------------------------------------------------
 # Liquid Glass Footer
 # ---------------------------------------------------------
 st.markdown("""
 <div class="liquid-footer">
-    <div>⚡ <strong>DeepResearch Agent</strong> &mdash; Engineered by <strong>x-estal nitish</strong></div>
-    <div style="margin-top: 8px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <a href="https://instagram.com/x_estal_nitish" target="_blank" style="color: #38BDF8; text-decoration: none;">
+    <div style="font-size: 1.05rem; font-weight: 700; color: #F8FAFC;">
+        ⚡ <strong>DeepResearch Agent</strong> &mdash; Engineered with pride by <strong>x-estal nitish</strong>
+    </div>
+    <div style="margin-top: 10px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
+        <a href="https://instagram.com/x_estal_nitish" target="_blank" style="color: #38BDF8; font-weight: 600; text-decoration: none;">
             📸 Instagram: @x_estal_nitish
         </a>
-        <span>&bull;</span>
-        <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" style="color: #818CF8; text-decoration: none;">
+        <span style="color: #475569;">&bull;</span>
+        <a href="https://www.linkedin.com/in/nitish-kumar-33714642b" target="_blank" style="color: #818CF8; font-weight: 600; text-decoration: none;">
             💼 LinkedIn: Nitish Kumar
         </a>
     </div>
-    <div style="margin-top: 6px; font-size: 0.8rem; color: #64748B;">
+    <div style="margin-top: 8px; font-size: 0.82rem; color: #64748B;">
         Autonomous LangGraph Agent Architecture &bull; Grounded Fact-Checking &bull; Multi-Tool Intelligence
     </div>
 </div>

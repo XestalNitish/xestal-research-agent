@@ -27,7 +27,9 @@ research_vault/*
 _trash/
 .agent_tools/
 
-# Distribution & packaging
+# Local backup folder
+"orignal code of research system/"
+*backup*/
 build/
 dist/
 *.egg-info/
